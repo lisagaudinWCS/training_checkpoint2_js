@@ -1,4 +1,5 @@
 import './App.css';
+import Game from './components/Game';
 import GameList from './components/GameList';
 import Header from "./components/Header";
 

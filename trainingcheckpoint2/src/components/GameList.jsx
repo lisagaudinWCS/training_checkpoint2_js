@@ -1,10 +1,9 @@
-import { useState, useEffect, axios } from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 import Game from "./Game";
 
-
     const GameList = () => {
-        const [games, setGames] = useState("")
-        // Créer un state pour stocker les données reçues de l'API
+       
         const getGames = () => {
             axios
                 .get(`https://apis.wilders.dev/wild-games/games`)
@@ -12,25 +11,22 @@ import Game from "./Game";
                 .then((response) => response.data)
                 // Extraire la data reçue de l'API
                 .then((data) => {
-                    setGames(data)
+                    setGames(data);
                 });
                 // Transmettre cette data pour mettre à jour le state
-        }
+        };
     
-        useEffect(() => getGames(), [])
+        const [games, setGames] = useState("")
+        // Créer un state pour stocker les données reçues de l'API
+       
+        // useEffect(() => getGames(), [])
 
 // https://apis.wilders.dev/wild-games
 
     return (
         <div>
-            {games.map((element, index) => (
-                    <Game 
-                    key={index}
-                    name={element.title}
-                    image={element.image}
-                    id={element.id}
-                    />))
-                }
+            <h2>Test Games</h2>
+            <Game games={games} />
         </div>
     )
 }

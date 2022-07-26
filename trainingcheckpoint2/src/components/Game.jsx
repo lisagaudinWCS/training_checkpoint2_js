@@ -1,8 +1,11 @@
-function Game ({name}) {
+function Game ({games}) {
 
     return (
+        games &&
         <div>
-            <h2>{name}</h2>
+            <ul>
+                <li>Name : {games.name}</li>
+            </ul>
         </div>
     )
 }
