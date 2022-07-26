@@ -24,8 +24,8 @@ import Game from "./Game";
 // https://apis.wilders.dev/wild-games
 
     return (
-        <div>
-            <h2>Test Games</h2>
+        <div className="GameList">
+            <h2>GameList</h2>
 
             {games && 
           games
@@ -34,7 +34,8 @@ import Game from "./Game";
             key={index}
             name={element.name}
             rating={element.rating}
-            id={element.id}
+            date={element.released}
+            image={element.background_image}
             />)
             )
           }
