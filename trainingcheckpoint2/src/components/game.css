@@ -1,0 +1,20 @@
+.game-container {
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 45%;
+    margin: auto;
+    margin-bottom: 20px;
+    background-color: cadetblue;
+}
+
+.game-name {
+    font-size: 24px;
+}
+
+.game-date {
+    font-style: italic;
+    color: white;
+}
+.game-img {
+    margin-bottom: 20px;
+}

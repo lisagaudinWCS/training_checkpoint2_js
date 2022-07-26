@@ -1,13 +1,11 @@
-function Game ({name, id, rating}) {
+import '../components/game.css'
+function Game ({name, image, date}) {
 
     return (
-        <div>
-            <ul>
-            <li>{name}</li>
-            <li>{id}</li>
-            <li>{rating}</li>
-            </ul>
-            <h3>testgamecomponent</h3>
+        <div className="game-container">
+            <h3 className='game-name'>{name}</h3>
+            <h4 className='game-date'>{date}</h4>
+            <img className='game-img' src={image} alt={name} height={150}/>
         </div>
     )
 }
