@@ -19,14 +19,26 @@ import Game from "./Game";
         const [games, setGames] = useState("")
         // Créer un state pour stocker les données reçues de l'API
        
-        // useEffect(() => getGames(), [])
+        useEffect(() => getGames(), [games])
 
 // https://apis.wilders.dev/wild-games
 
     return (
         <div>
             <h2>Test Games</h2>
-            <Game games={games} />
+
+            {games && 
+          games
+          .map((element, index) => (
+            <Game 
+            key={index}
+            name={element.name}
+            rating={element.rating}
+            id={element.id}
+            />)
+            )
+          }
+
         </div>
     )
 }
