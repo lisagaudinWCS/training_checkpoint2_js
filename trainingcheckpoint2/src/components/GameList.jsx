@@ -16,46 +16,37 @@ import Game from "./Game";
         const [games, setGames] = useState("");
         const [filtered, setFiltered] = useState(false);
 
-        const handleSwitch = () => {
-            setFiltered(!filtered)
-        }
-
-        const getGames = () => {
+        
+        useEffect(() => {
             axios
-                .get(`https://apis.wilders.dev/wild-games/games`)
+            .get('https://apis.wilders.dev/wild-games/games/')
                 // Lancer l'appel à l'API
-                .then((response) => response.data)
+            .then(response => response.data)
                 // Extraire la data reçue de l'API
-                .then((data) => {
-                    setGames(data);
-                });
+            .then(data => setGames(data))
+                }, []);
+        
+        const handleSwitch = () => {
+            setFiltered(!filtered);
         };
-       
-        useEffect(() => getGames(), [games])
-
-// https://apis.wilders.dev/wild-games
-
+                
+    
     return (
         <div className="GameList">
             <h2>GameList</h2>
-            <button onClick={handleSwitch}>Game Filter</button>
+            <button onClick={handleSwitch}>{filtered ? "All Games" : "Top Game"}</button>
 
             {games && games
             .filter(value => !filtered || value.rating > 4.5)
 
-            .map((element, index) => (
+            .map(value => (
                 <Game 
-                key={index}
-                name={element.name}
-                rating={element.rating}
-                date={element.released}
-                image={element.background_image}
-                />)
-                )
+                key={value.id}
+                value={value} />
+                ))
             }
-
         </div>
-    )
+    );
 }
 
 export default GameList;
